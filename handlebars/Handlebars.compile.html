@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Handlebars demo</title>
+	<script src="handlebars-v3.0.0.js"></script>
+	<script>
+		var data = [
+		    {
+		        "Name": "Peter Parker",
+		        "Age": 29,
+		        "Address": "NY"
+		    },
+		    {
+		        "Name": "Scott Summers",
+		        "Age": 35,
+		        "Address": "AK"
+		    }
+		];
+	</script>
+</head>
+<body>
+
+	<div id="output"></div>
+
+	<script id="t" type="text/x-handlebars/template">
+	<table>
+	{{#each items}}  
+      <tr>
+      	<th>{{Name}}</th>
+        <td>{{Age}}</td>  
+        <td>{{Address}}</td>
+      </tr>
+	{{/each}}
+	</table>
+	</script>
+
+<script>
+	var markup = document.getElementById('t').innerHTML;
+	var template = Handlebars.compile(markup);
+	var output = template({"items": data});
+
+	document.getElementById('output').innerHTML = output;
+	//console.log(template({"item": data}));
+</script>
+</body>
+</html>
