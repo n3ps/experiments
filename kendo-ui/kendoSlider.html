@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Kendo Slider demo</title>
+	<link rel="stylesheet" href="styles/kendo.common.min.css" />
+	<link rel="stylesheet" href="styles/kendo.metro.min.css" />
+	
+	<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+	
+	<script type="text/javascript" src="js/kendo.core.min.js"></script>
+	<script type="text/javascript" src="js/kendo.ui.core.min.js"></script>
+	
+	<script type="text/javascript" src="js/kendo.slider.min.js"></script>
+	<style type="text/css">
+	body {font: 12px arial;}
+	/*
+	.k-slider-selection { background: #6fb62f; }
+	.k-state-focused.k-state-selected {box-shadow: none; background: white; border-color: #ccc;}
+	*/
+	</style>
+</head>
+<body>
+	<div>
+	
+		<input min="0" max="5" id="slider" type="range" />
+	
+	</div>
+	
+	<script type="text/javascript">
+	$(function() {		
+		$('#slider').kendoSlider({
+			showButtons: false,
+			tooltip: {enabled: false},
+			tickPlacement: 'bottomRight'
+		});
+	});
+	</script>
+</body>
+</html>
