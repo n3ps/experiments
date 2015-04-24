@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Toastr</title>
+	<link rel="stylesheet" href="bower_components/toastr/toastr.css"/>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/toastr/toastr.js"></script>
+</head>
+<body>
+	<button id="b">Hit it</button>
+
+	<script>
+		function doIt () {
+			toastr.info('Some info')
+			toastr.warning('Warning');
+			toastr.success('Success');
+			toastr.error('Error');
+		}
+		document.getElementById('b').onclick = doIt;
+	</script>
+</body>
+</html>
