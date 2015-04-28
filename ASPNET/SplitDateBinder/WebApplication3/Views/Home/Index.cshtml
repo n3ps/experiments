@@ -1,0 +1,22 @@
+﻿@model SplitDateDemo.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-4">
+
+        @using (Html.BeginForm())
+        {
+            <p>@Html.EditorFor(m => m.Name)</p>
+
+            <p>@Html.EditorFor(m => m.BirthDate)</p>
+            @Html.SplitValidationMessageFor(m => m.BirthDate)
+            @Html.ValidationMessageFor(m => m.BirthDate)
+
+            <p><input type="submit" name="name" value="Register" /></p>
+        }
+        
+    </div>
+</div>

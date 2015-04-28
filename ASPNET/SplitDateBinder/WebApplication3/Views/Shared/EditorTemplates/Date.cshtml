@@ -1,0 +1,35 @@
+﻿@using System.Globalization
+
+@model DateTime?
+
+@{
+    var dayValue = Model.HasValue ? Model.Value.Day.ToString(CultureInfo.CurrentUICulture) : Context.Request.Form[ViewData.ModelMetadata.PropertyName + ".Day"];
+    var monthValue = Model.HasValue ? Model.Value.Month.ToString(CultureInfo.CurrentUICulture) : Context.Request.Form[ViewData.ModelMetadata.PropertyName + ".Month"];
+    var yearValue = Model.HasValue ? Model.Value.Year.ToString(CultureInfo.CurrentUICulture) : Context.Request.Form[ViewData.ModelMetadata.PropertyName + ".Year"];
+}
+
+@{
+    var dayAttributes = ViewData.ModelMetadata.AdditionalValues.AugmentDictionary(
+        new { Value = @dayValue, placeholder = "Day", min = "1", max = "31", maxlength = "2", @class = "day" },
+        true);
+
+    var monthAttributes = ViewData.ModelMetadata.AdditionalValues.AugmentDictionary(
+        new { @class = "month" },
+        true); 
+
+    var yearAttributes = ViewData.ModelMetadata.AdditionalValues.AugmentDictionary(
+        new { Value = @yearValue, placeholder = "Year", min = "1000", maxlength = "4", @class = "year" },
+        true);
+}
+
+@Html.TextBoxFor(model => model.GetValueOrDefault().Day, dayAttributes)
+
+@Html.DropDownListFor(model => model.GetValueOrDefault().Month, Enumerable.Range(1, 12).Select(i =>
+        new SelectListItem
+        {
+            Value = i.ToString(),
+            Text = CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(i),
+            Selected = (i.ToString() == monthValue)
+        }), "Month", monthAttributes)
+
+@Html.TextBoxFor(model => model.GetValueOrDefault().Year, yearAttributes)
