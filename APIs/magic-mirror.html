@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magic Mirror</title>
+    <style>
+        html, body, table {
+            height: 100%;
+        }
+        body {
+            background: black;
+            color: #cacaca;
+            font: 32px Calibri, Helvetica, Arial, sans-serif;
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        table, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 0;
+        }
+        td:not([colspan]) {
+            width: 33%;
+        }
+        iframe {
+            height: 100%;
+            width: 100%;
+            border: none;
+        }
+        #instagram img {
+            margin-right: 20px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                The time is
+                <span id="clock"></span>
+            </td>
+            <td>
+                <iframe src="http://www.engadget.com"></iframe>
+            </td>
+            <td>
+                Temperature can go here
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div id="instagram"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">RSS feeds can go here</td>
+        </tr>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
