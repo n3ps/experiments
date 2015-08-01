@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script>
+	window.onload = function() {
+		var echoForm = document.getElementById('echoForm');
+		var echo = new Worker('echo.js'); 
+		echo.addEventListener("message", function(e) {
+		  alert(e.data); 
+		}, false);
+
+		echoForm.addEventListener('submit', function(e) {
+		  echo.postMessage({
+			message : e.target.message.value,
+			timeout : e.target.timeout.value
+		  }); 
+		  e.preventDefault();
+		}, false); 
+	}
+	  
+	</script>
+	<form id="echoForm">
+	  <p>Echo the following message after a delay.</p>
+	  <input type="text" name="message" value="Input message here."/><br/>
+	  <input type="number" name="timeout" max="10" value="2"/> seconds.<br/>
+	  <button type="submit">Send Message</button>
+	</form>
+
+</body>
+</html>
